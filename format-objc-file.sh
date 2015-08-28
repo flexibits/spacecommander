@@ -32,3 +32,5 @@ python "$DIR"/custom/MacroSemicolonAppender.py "$1"
 python "$DIR"/custom/HasIncludeSpaceRemover.py "$1"
 # Add a newline at the end of the file
 python "$DIR"/custom/NewLineAtEndOfFileInserter.py "$1"
+# Convert "^(void) {" to "^{" in block declarations
+python "$DIR"/custom/RemoveVoidBlockDeclaration.py "$1"
