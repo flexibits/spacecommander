@@ -7,15 +7,14 @@ ConstructorInitializerIndentWidth: 4
 AlignAfterOpenBracket: true
 AlignEscapedNewlinesLeft: true
 AlignOperands: false
-AlignTrailingComments: true
+AlignTrailingComments: false
 
 AllowAllParametersOfDeclarationOnNextLine: false
 AllowShortBlocksOnASingleLine: false
 AllowShortCaseLabelsOnASingleLine: false
-AllowShortFunctionsOnASingleLine: true
-AllowShortIfStatementsOnASingleLine: true
-AllowShortFunctionsOnASingleLine: All
-AllowShortLoopsOnASingleLine: true
+AllowShortFunctionsOnASingleLine: false
+AllowShortIfStatementsOnASingleLine: false
+AllowShortLoopsOnASingleLine: false
 
 AlwaysBreakAfterDefinitionReturnType: false
 AlwaysBreakTemplateDeclarations: false
@@ -37,7 +36,7 @@ IndentFunctionDeclarationAfterType: false
 MaxEmptyLinesToKeep: 2
 KeepEmptyLinesAtTheStartOfBlocks: false
 NamespaceIndentation: Inner
-ObjCSpaceAfterProperty: true
+ObjCSpaceAfterProperty: false
 ObjCSpaceBeforeProtocolList: true
 PenaltyBreakBeforeFirstCallParameter: 10000
 PenaltyBreakComment: 300
@@ -60,7 +59,7 @@ SpacesInAngles:  false
 SpaceInEmptyParentheses: false
 SpacesInCStyleCastParentheses: false
 SpaceAfterCStyleCast: false
-SpacesInContainerLiterals: true
+SpacesInContainerLiterals: false
 SpaceBeforeAssignmentOperators: true
 
 ContinuationIndentWidth: 4
