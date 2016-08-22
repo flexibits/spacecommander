@@ -1,3 +1,4 @@
+---
 # Custom options in the special build of clang-format (these are not standard options)
 IndentNestedBlocks: false
 AllowNewlineBeforeBlockParameter: false
@@ -30,7 +31,7 @@ BreakConstructorInitializersBeforeComma: false
 
 BinPackArguments: true
 BinPackParameters: true
-ColumnLimit:     0
+ColumnLimit: 0
 ConstructorInitializerAllOnOneLineOrOnePerLine: true
 DerivePointerAlignment: false
 ExperimentalAutoDetectBinPacking: false
@@ -56,7 +57,19 @@ Standard:        Auto
 IndentWidth:     4
 TabWidth:        8
 UseTab:          Never
-BreakBeforeBraces: Linux
+BreakBeforeBraces: Custom
+BraceWrapping: 
+    AfterClass: true
+    AfterControlStatement: false
+    AfterEnum: false
+    AfterFunction: true
+    AfterNamespace: true
+    AfterObjCDeclaration: false
+    AfterStruct: false
+    AfterUnion: false
+    BeforeCatch: false
+    BeforeElse: false
+    IndentBraces: false
 
 SpacesInParentheses: false
 SpacesInSquareBrackets: false

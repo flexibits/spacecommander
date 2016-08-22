@@ -30,6 +30,22 @@ BOOL extraSemicolonsNotInsertedAfterCGStructInitializer()
             width:hairline];
 }
 
+// Unfortunately, the first @property's spacing is ignored because clang-format is confused by the generic category interface.
+@interface NSDictionary<__covariant KeyType, __covariant ObjectType>(INSScrub)
+
+@property(nonatomic, assign, getter = isWackSpacingGetter, readonly) BOOL wackSpacing;
+@property (readonly, copy) NSDictionary<KeyType, ObjectType> *ins_scrubbed;
+@property(nonatomic, assign, getter = isWackSpacingGetter, readonly) BOOL wackSpacing;
+
+@end
+
+ @interface NSDictionary<__covariant KeyType, __covariant ObjectType> (INSScrub)
+
+@property (readonly, copy) NSDictionary<KeyType, ObjectType> *ins_scrubbedA;
+@property(readonly, copy) NSDictionary<KeyType, ObjectType> *ins_scrubbedB;
+
+@end
+
 #define RKTAddTestCaseCategoryInterface(klass, name) \
 @class klass; \
 @interface KIFTestCase (klass##_ConvenienceAdditions) \
@@ -91,7 +107,40 @@ struct Update {
 
 - (id <ProtocolConformer>)spaceInTypeName;
 {
+    [_heartRateView showHRList:^{
+[self performSegueWithIdentifier:@"ToHRList" sender:nil];
+    }];
+
+    [self.delegate capturePaymentForTransactionAutomaticCaptureController:self completionHandler:^(NSError *error) {
+    if (NO) {
+            // do nothing
+    } else {
+    }
+        }];
   return nil;
+}
+
+-(void)blockFormat;
+{
+    [self block:^(void) {
+ doStuff();
+    } completionHandler:^(void) {
+         doStuff();
+
+      [self block:^(void) {
+        doStuff();
+      } completionHandler:^(void) {
+ doStuff();
+      }];
+    }];
+
+    [self setupTextFieldSignals:@[
+      self.documentWidthField,
+      self.documentHeightField,
+    ] solver:^(NSTextField *textField) {
+      return [self.representedObject solveEquationForTextField:textField];
+    }];
+
 }
 
 - (void)paranthesisInMessage
@@ -125,6 +174,50 @@ BOOL CStyleMethod()
   return false;
 }
 
+INSAFSuccessBlock INSAPIClientModelSuccessHandler(Class mantleClass, NSString *__nullable keyPath, INSHTTPSuccess __nullable success, INSHTTPFailure __nullable failure)
+{
+    return INSAPIClientModelSuccessChain(mantleClass, keyPath, ^(__kindof INSModel *model, id _) {
+        if (success) {
+            success(model);
+        }
+    }, failure);
 
+
+}
+
+- (void)fetchWithSuccess:(nullable dispatch_block_t)success failure:(nullable INSHTTPFailure)failure
+{
+    [self GET:@"data" parameters:nil success:INSAPIClientModelArraySuccessChain([INSModel class], nil, ^(INSModel *model, id responseObject) {
+        if (success) {
+            success();
+        }
+    }, failure) failure:failure];
+
+}
+
+- (void)postWithSuccess:(nullable INSHTTPSuccess)success failure:(nullable INSHTTPFailure)failure
+{
+    id imageData = nil;
+    [self POST:@"endpoint" parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        if (imageData) {
+            [formData appendPartWithFileData:imageData name:@"image" fileName:@"photo.jpg" mimeType:@"image/jpeg"];
+        }
+    } success:INSAPIClientEmptySuccessHandler(success) failure:failure];
+}
+
+// clang-format off
+- (void)callbackWithSuccess:(dispatch_block_t)success
+{
+    NSError *error = nil;
+    [self createModelWithMapping:@{
+        @"key": [NSArray ins_arrayWithCount:5 usingBlock:^__nullable id (NSUInteger idx) {
+            return nil;
+        }],
+    } error:&error];
+    if (success) {
+        success();
+    }
+}
+// clang-format on
 
 @end

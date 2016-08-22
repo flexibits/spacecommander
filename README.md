@@ -45,6 +45,8 @@ Configuration
 
 To format files only within selected directories, specify the name each directory in a file named `.formatting-directory`, separated by newlines (and without whitespace escaped). Otherwise, all Objective-C files tracked in the repo will be checked.
 
+To ignore files within directories, add the name of each directory on a new line to a file named `.formatting-directory-ignore`.
+
 To modify the formatting output, edit the following:
 
 * `.clang-format` for built in `clang-format` options.
@@ -60,7 +62,7 @@ Installation for Pull Request Validation
 
 If you want style checking as a mandatory step to get a mergeable PR, do the following:
 
-* Ensure that this repository is located at `Scripts/spacecommander`, or add it to `.dependencies` at `../spacecommander`
+* Add this repository as a [cocoapod](https://guides.cocoapods.org/using/getting-started.html), or add it as a submodule in a `Scripts/` directory.
 * Ensure that your repository has setup `.sqiosbuild.json` and `.stashkins` files at the top level (more info on the Square wiki page titled *All About Mobuild*).
 * The build machines are setup to check for the above conditions, and if they're met, automatically run `format-objc-mobuild`.
 * Open a PR with a modified Objective-C file to verify these checks are running.
@@ -80,12 +82,19 @@ Custom Formatters
 
 `clang-format` is fantastic and we love it, but it has some limitations. We've added our own ad-hoc formatting capabilities through scripts which live in `custom/`. If you add a custom file formatting script to `custom/`, invoke it in `format-objc-file.sh` and `format-objc-file-dry-run.sh` and add examples of input / output to files in `Testing Support/`.
 
-Other Notes
+Undesired Result?
 -------------
 
 The formatter can't do everything. It may occasionally produce an undesirable result, in which case you can either:
 
 * Refactor code to produce a line that is simpler and less confusing to the formatter.
+* Use `// clang-format off` and `// clang-format on` to selectively enable/disable `clang-format` for specific lines of a file.
 * Add `#pragma Formatter Exempt` or `// MARK: Formatter Exempt` as the first line of the file, and it will not be formatted at all.
 * [Wislawa Szymborska](http://en.wikipedia.org/wiki/Wis%C5%82awa_Szymborska) said "All imperfection is easier to tolerate if served up in small doses." **[ Space Commander]** will remove nearly all formatting imperfections, but you may need to tolerate an occasional deviation from the expected result.
 
+Contributing
+-------------
+
+We’re glad you’re interested in **[ Space Commander]**, and we’d love to see where you take it. Please read our [contributing guidelines](Contributing.md) prior to submitting a Pull Request.
+
+Thanks, and happy formatting!
