@@ -38,3 +38,5 @@ python "$DIR"/custom/HasIncludeSpaceRemover.py "$1"
 python "$DIR"/custom/NewLineAtEndOfFileInserter.py "$1"
 # Convert "^(void) {" to "^{" in block declarations
 python "$DIR"/custom/RemoveVoidBlockDeclaration.py "$1"
+# Remove trailing semicolon from API_AVAILABLE macros
+python "$DIR"/custom/RemoveAPIAvailableSemicolon.py "$1"
