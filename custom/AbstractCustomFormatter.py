@@ -11,11 +11,11 @@ class AbstractCustomFormatter(object):
 
     def run(self):
         if len(sys.argv) == 2:
-            f = open(sys.argv[1], "r+b")
+            f = open(sys.argv[1], "r+t")
             formatted_lines = self.format_lines(f.readlines())
             f.close()
 
-            f = open(sys.argv[1], "w+b")
+            f = open(sys.argv[1], "w+t")
             f.write(formatted_lines)
             f.close()
         else:
