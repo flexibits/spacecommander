@@ -4,6 +4,7 @@
     "indentation": {
         "spaces": 4
     },
-    "respectsExistingLineBreaks": false,
+    "maximumBlankLines": 1,
+    "respectsExistingLineBreaks": true,
     "prioritizeKeepingFunctionOutputTogether": true,
 }
