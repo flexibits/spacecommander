@@ -18,25 +18,25 @@ line="$(head -1 "$1" | xargs)"
 [ "$line" == "#pragma Formatter Exempt" -o "$line" == "// MARK: Formatter Exempt" ] && exit 0
 
 # Fix an edge case with array / dictionary literals that confuses clang-format
-python "$DIR"/custom/LiteralSymbolSpacer.py "$1"
+python3 "$DIR"/custom/LiteralSymbolSpacer.py "$1"
 # The formatter gets confused by C++ inline constructors that are broken onto multiple lines
-python "$DIR"/custom/InlineConstructorOnSingleLine.py "$1"
+python3 "$DIR"/custom/InlineConstructorOnSingleLine.py "$1"
 # Add a semicolon at the end of simple macros
-python "$DIR"/custom/MacroSemicolonAppender.py "$1"
+python3 "$DIR"/custom/MacroSemicolonAppender.py "$1"
 # Add an extra newline before @implementation and @interface
-#python "$DIR"/custom/DoubleNewlineInserter.py "$1"
+#python3 "$DIR"/custom/DoubleNewlineInserter.py "$1"
 
 # Run clang-format
 "$DIR"/bin/clang-format-3.8-custom -i -style=file "$1" ;
 # Fix an issue with clang-format getting confused by categories with generic expressions.
-#python "$DIR"/custom/GenericCategoryLinebreakIndentation.py "$1"
+#python3 "$DIR"/custom/GenericCategoryLinebreakIndentation.py "$1"
 # Fix an issue with clang-format breaking up a lone parameter onto a newline after a block literal argument.
-python "$DIR"/custom/ParameterAfterBlockNewline.py "$1"
+python3 "$DIR"/custom/ParameterAfterBlockNewline.py "$1"
 # Fix an issue with clang-format inserting spaces in a preprocessor macro.
-python "$DIR"/custom/HasIncludeSpaceRemover.py "$1"
+python3 "$DIR"/custom/HasIncludeSpaceRemover.py "$1"
 # Add a newline at the end of the file
-python "$DIR"/custom/NewLineAtEndOfFileInserter.py "$1"
+python3 "$DIR"/custom/NewLineAtEndOfFileInserter.py "$1"
 # Convert "^(void) {" to "^{" in block declarations
-python "$DIR"/custom/RemoveVoidBlockDeclaration.py "$1"
+python3 "$DIR"/custom/RemoveVoidBlockDeclaration.py "$1"
 # Remove trailing semicolon from API_AVAILABLE macros
-python "$DIR"/custom/RemoveAPIAvailableSemicolon.py "$1"
+python3 "$DIR"/custom/RemoveAPIAvailableSemicolon.py "$1"
