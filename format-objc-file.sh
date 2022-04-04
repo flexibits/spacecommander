@@ -17,6 +17,14 @@ fi
 line="$(head -1 "$1" | xargs)" 
 [ "$line" == "#pragma Formatter Exempt" -o "$line" == "// MARK: Formatter Exempt" ] && exit 0
 
+# Format Swift files using swift-format
+filename=$(basename "$1")
+
+if [[ ${filename##*.} == 'swift' ]]; then
+    swift-format -i --configuration "$DIR/.swift-format" "$1"
+    exit $?
+fi
+
 # Fix an edge case with array / dictionary literals that confuses clang-format
 python "$DIR"/custom/LiteralSymbolSpacer.py "$1"
 # The formatter gets confused by C++ inline constructors that are broken onto multiple lines
