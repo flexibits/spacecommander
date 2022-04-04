@@ -14,14 +14,14 @@ if [ "$line" == "#pragma Formatter Exempt" -o "$line" == "// MARK: Formatter Exe
 fi
 
 cat "$1" | \
-python "$DIR"/custom/LiteralSymbolSpacer.py | \
-python "$DIR"/custom/InlineConstructorOnSingleLine.py | \
-python "$DIR"/custom/MacroSemicolonAppender.py | \
-#python "$DIR"/custom/DoubleNewlineInserter.py | \
+python3 "$DIR"/custom/LiteralSymbolSpacer.py | \
+python3 "$DIR"/custom/InlineConstructorOnSingleLine.py | \
+python3 "$DIR"/custom/MacroSemicolonAppender.py | \
+#python3 "$DIR"/custom/DoubleNewlineInserter.py | \
 "$DIR"/bin/clang-format-3.8-custom -style=file | \
-#python "$DIR"/custom/GenericCategoryLinebreakIndentation.py | \
-python "$DIR"/custom/ParameterAfterBlockNewline.py | \
-python "$DIR"/custom/HasIncludeSpaceRemover.py | \
-python "$DIR"/custom/NewLineAtEndOfFileInserter.py | \
-python "$DIR"/custom/RemoveVoidBlockDeclaration.py | \
-python "$DIR"/custom/RemoveAPIAvailableSemicolon.py
+#python3 "$DIR"/custom/GenericCategoryLinebreakIndentation.py | \
+python3 "$DIR"/custom/ParameterAfterBlockNewline.py | \
+python3 "$DIR"/custom/HasIncludeSpaceRemover.py | \
+python3 "$DIR"/custom/NewLineAtEndOfFileInserter.py | \
+python3 "$DIR"/custom/RemoveVoidBlockDeclaration.py | \
+python3 "$DIR"/custom/RemoveAPIAvailableSemicolon.py
