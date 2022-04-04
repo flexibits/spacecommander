@@ -13,6 +13,14 @@ if [ "$line" == "#pragma Formatter Exempt" -o "$line" == "// MARK: Formatter Exe
   cat "$1" && exit 0
 fi
 
+# Format Swift files using swift-format
+filename=$(basename "$1")
+
+if [[ ${filename##*.} == 'swift' ]]; then
+    cat "$1" | swift-format --configuration "$DIR/.swift-format" "$1"
+    exit $?
+fi
+
 cat "$1" | \
 python3 "$DIR"/custom/LiteralSymbolSpacer.py | \
 python3 "$DIR"/custom/InlineConstructorOnSingleLine.py | \

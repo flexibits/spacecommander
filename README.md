@@ -19,6 +19,8 @@ Installation Locally
 
 To add formatting pre-commit checks to your repo, from the target repo, run `path/to/spacecommander/setup-repo.sh`.
 
+Swift support: Have swift-format installed in your path (e.g. `brew install swift-format`)
+
 Usage
 -------------
 
