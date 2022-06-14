@@ -1,0 +1,98 @@
+--swiftversion 5.5
+
+--acronyms ID,URL,UUID
+--allman false
+--assetliterals visual-width
+--beforemarks 
+--categorymark "MARK: %c"
+--classthreshold 0
+--closingparen same-line
+--conflictmarkers reject
+--enumthreshold 0
+--exponentcase lowercase
+--exponentgrouping enabled
+--extensionlength 0
+--extensionmark "MARK: - %t + %c"
+--fractiongrouping enabled
+--fragment false
+--funcattributes prev-line
+--groupedextension "MARK: %c"
+--guardelse same-line
+--header ignore
+--hexliteralcase uppercase
+--ifdef outdent
+--importgrouping alpha
+--indent 4
+--lifecycle 
+--linebreaks lf
+--maxwidth none
+--modifierorder override,public,private(set),lazy,weak,final,convenience
+--nospaceoperators ...,..<
+--octalgrouping none
+--operatorfunc spaced
+--organizetypes actor,class,enum,struct
+--self insert
+--selfrequired 
+--semicolons never
+--stripunusedargs closure-only
+--structthreshold 0
+--tabwidth unspecified
+--trailingclosures 
+--typeattributes same-line
+--typemark "MARK: - %t"
+--varattributes same-line
+--wraparguments before-first
+--wrapcollections before-first
+--wrapconditions before-first
+--wrapparameters after-first
+--wrapreturntype preserve
+--wrapternary default
+--wraptypealiases preserve
+
+# rules
+
+--rules anyObjectProtocol
+--rules blankLinesBetweenScopes
+--rules blockComments
+--rules braces
+--rules consecutiveSpaces
+--rules duplicateImports
+--rules elseOnSameLine
+--rules enumNamespaces
+--rules extensionAccessControl
+--rules hoistPatternLet
+--rules indent
+--rules markTypes
+--rules modifierOrder
+--rules numberFormatting
+--rules organizeDeclarations
+--rules redundantClosure
+--rules redundantFileprivate
+--rules redundantGet
+--rules redundantInit
+--rules redundantParens
+--rules redundantPattern
+--rules redundantRawValues
+--rules redundantReturn
+--rules redundantSelf
+--rules redundantType
+--rules redundantVoidReturnType
+--rules semiColons
+--rules sortDeclarations
+--rules sortedImports
+--rules spaceAroundBraces
+--rules spaceAroundComments
+--rules spaceAroundOperators
+--rules spaceAroundParens
+--rules spaceInsideBraces
+--rules spaceInsideBrackets
+--rules spaceInsideComments
+--rules spaceInsideParens
+--rules strongifiedSelf
+--rules trailingCommas
+--rules trailingSpace
+--rules typeSugar
+--rules unusedArguments
+--rules wrap
+--rules wrapArguments
+--rules wrapAttributes
