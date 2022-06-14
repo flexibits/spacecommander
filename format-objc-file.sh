@@ -17,11 +17,11 @@ fi
 line="$(head -1 "$1" | xargs)" 
 [ "$line" == "#pragma Formatter Exempt" -o "$line" == "// MARK: Formatter Exempt" ] && exit 0
 
-# Format Swift files using swift-format
+# Format Swift files using swiftformat
 filename=$(basename "$1")
 
 if [[ ${filename##*.} == 'swift' ]]; then
-    swift-format -i --configuration "$DIR/.swift-format" "$1"
+    cat "$1" | swiftformat stdin --stdinpath "$1" --config "$DIR/.swiftformat" --quiet --output "$1"
     exit $?
 fi
 

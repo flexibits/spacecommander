@@ -13,11 +13,11 @@ if [ "$line" == "#pragma Formatter Exempt" -o "$line" == "// MARK: Formatter Exe
   cat "$1" && exit 0
 fi
 
-# Format Swift files using swift-format
+# Format Swift files using swiftformat
 filename=$(basename "$1")
 
 if [[ ${filename##*.} == 'swift' ]]; then
-    cat "$1" | swift-format --configuration "$DIR/.swift-format" "$1"
+    swiftformat "$1" --config "$DIR/.swiftformat" --output stdout --quiet
     exit $?
 fi
 
