@@ -66,7 +66,6 @@
 --rules extensionAccessControl
 --rules hoistPatternLet
 --rules indent
---rules initCoderUnavailable
 --rules isEmpty
 --rules markTypes
 --rules modifierOrder
