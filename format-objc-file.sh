@@ -5,6 +5,7 @@
 
 export CDPATH=""
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+PATH=$PATH:/opt/homebrew/bin
 
 if [ ! -e ".clang-format" ]; then
 	echo "Couldn't find .clang-format file, unable to format files. Please setup this repo by running the setup-repo.sh script from your repo's top level."

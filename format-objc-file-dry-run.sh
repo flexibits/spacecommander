@@ -5,6 +5,7 @@
 
 export CDPATH=""
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+PATH=$PATH:/opt/homebrew/bin
 
 # "#pragma Formatter Exempt" or "// MARK: Formatter Exempt" means don't format this file.
 # Read the first line and trim it.
