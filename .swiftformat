@@ -1,4 +1,4 @@
---swiftversion 5.5
+--swiftversion 5.7
 
 --acronyms ID,URL,UUID
 --allman false
@@ -38,7 +38,7 @@
 --structthreshold 0
 --tabwidth unspecified
 --trailingclosures 
---typeattributes same-line
+--typeattributes prev-line
 --typemark "MARK: - %t"
 --varattributes same-line
 --wraparguments before-first
