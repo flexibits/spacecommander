@@ -4,7 +4,7 @@
 --allman false
 --assetliterals visual-width
 --classthreshold 0
---closingparen same-line
+--closingparen balanced
 --conflictmarkers reject
 --enumthreshold 0
 --exponentcase lowercase
@@ -38,7 +38,8 @@
 --wraparguments before-first
 --wrapcollections before-first
 --wrapconditions before-first
---wrapparameters after-first
+--wrapenumcases always
+--wrapparameters before-first
 --wrapreturntype preserve
 --wrapternary default
 --wraptypealiases preserve
