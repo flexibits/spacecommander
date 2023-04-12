@@ -61,6 +61,9 @@ function symlink_clang_format() {
   $(ln -sf "$DIR/.clang-format" ".clang-format")
 }
 
+function install_swiftlint_and_swiftformat() {
+    $(brew install swiftlint swiftformat)
+}
 
-ensure_pre_commit_file_exists && ensure_pre_commit_file_is_executable && ensure_hook_is_installed && ensure_git_ignores_clang_format_file && symlink_clang_format
+ensure_pre_commit_file_exists && ensure_pre_commit_file_is_executable && ensure_hook_is_installed && ensure_git_ignores_clang_format_file && symlink_clang_format && install_swiftlint_and_swiftformat
 
