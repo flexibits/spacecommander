@@ -13,6 +13,18 @@ if [ ! -e ".clang-format" ]; then
 	exit 1
 fi
 
+if [ ! -x "swiftlint" ]; then
+	echo "Couldn't find swiftlint, unable to lint files. Please setup this repo by running the setup-repo.sh script from your repo's top level."
+	echo "Also, formatting scripts should be run from the repo's top level dir."
+	exit 1
+fi
+
+if [ ! -x "swiftformat" ]; then
+	echo "Couldn't find swiftformat, unable to format files. Please setup this repo by running the setup-repo.sh script from your repo's top level."
+	echo "Also, formatting scripts should be run from the repo's top level dir."
+	exit 1
+fi
+
 # "#pragma Formatter Exempt" or "// MARK: Formatter Exempt" means don't format this file.
 # Read the first line and trim it.
 line="$(head -1 "$1" | xargs)" 
