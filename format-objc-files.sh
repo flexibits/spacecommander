@@ -28,16 +28,19 @@ objc_files=$(objc_files_to_format "$optional_base_sha")
 
 function format_objc() {
   for file in $objc_files; do
-	$("$DIR"/format-objc-file.sh "$file")
-	echo "Formatted $file"
-	if [ "$stage_flag" -eq 1 ]; then
-		$(git add "$file")
-		echo -e "\tStaged $file"
+	if $("$DIR"/format-objc-file.sh "$file"); then
+        echo "Formatted $file"
+        if [ "$stage_flag" -eq 1 ]; then
+            $(git add "$file")
+            echo -e "\tStaged $file"
+        fi
+    else
+        echo -e "\tFailed to format $file"
+        exit 1
 	fi
   done
 }
 
-format_objc
-echo "Formatting complete."
+format_objc && echo "Formatting complete."
 
 exit 0
