@@ -61,3 +61,6 @@ python3 "$DIR"/custom/NewLineAtEndOfFileInserter.py "$1"
 python3 "$DIR"/custom/RemoveVoidBlockDeclaration.py "$1"
 # Remove trailing semicolon from API_AVAILABLE macros
 python3 "$DIR"/custom/RemoveAPIAvailableSemicolon.py "$1"
+# Fix indentation issues around BEGIN/END_DEFER_DEPRECATION_UNTIL_IOS
+python3 "$DIR"/custom/DeferDeprecationsIndentationFix.py "$1"
+
