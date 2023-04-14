@@ -13,13 +13,13 @@ if [ ! -e ".clang-format" ]; then
 	exit 1
 fi
 
-if [ ! -x "swiftlint" ]; then
+if ! which swiftlint >/dev/null ; then
 	echo "Couldn't find swiftlint, unable to lint files. Please setup this repo by running the setup-repo.sh script from your repo's top level."
 	echo "Also, formatting scripts should be run from the repo's top level dir."
 	exit 1
 fi
 
-if [ ! -x "swiftformat" ]; then
+if ! which swiftformat >/dev/null ; then
 	echo "Couldn't find swiftformat, unable to format files. Please setup this repo by running the setup-repo.sh script from your repo's top level."
 	echo "Also, formatting scripts should be run from the repo's top level dir."
 	exit 1
