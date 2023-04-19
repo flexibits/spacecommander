@@ -1,4 +1,4 @@
-# RemoveVoidBlockDeclaration.py
+# RemoveAPIAvailableSemicolon.py
 # Converts "^(void) {" to "^{" since the (void) is unnecessary
 #
 # If a filename is specified as a parameter, it will change that file in place.
