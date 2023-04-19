@@ -33,4 +33,5 @@ python3 "$DIR"/custom/ParameterAfterBlockNewline.py | \
 python3 "$DIR"/custom/HasIncludeSpaceRemover.py | \
 python3 "$DIR"/custom/NewLineAtEndOfFileInserter.py | \
 python3 "$DIR"/custom/RemoveVoidBlockDeclaration.py | \
-python3 "$DIR"/custom/RemoveAPIAvailableSemicolon.py
+python3 "$DIR"/custom/RemoveAPIAvailableSemicolon.py | \
+python3 "$DIR"/custom/ReplaceAtImport.py

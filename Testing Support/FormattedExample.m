@@ -2,6 +2,7 @@
 #import @"XYZGeometry.h"
 #import "Blah.h"
 #import <Great.h>
+#import <Foundation/Foundation.h>
 
 
 #define FQCommonInitInterfaceDeclaration(className) -(void)_##className##_commonInit

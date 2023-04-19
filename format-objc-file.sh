@@ -49,3 +49,5 @@ python3 "$DIR"/custom/NewLineAtEndOfFileInserter.py "$1"
 python3 "$DIR"/custom/RemoveVoidBlockDeclaration.py "$1"
 # Remove trailing semicolon from API_AVAILABLE macros
 python3 "$DIR"/custom/RemoveAPIAvailableSemicolon.py "$1"
+# Replace @import with #import
+python3 "$DIR"/custom/ReplaceAtImport.py "$1"
