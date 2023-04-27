@@ -23,8 +23,7 @@
 --nospaceoperators ...,..<
 --octalgrouping none
 --operatorfunc spaced
---self insert
---selfrequired 
+--self remove
 --semicolons never
 --stripunusedargs closure-only
 --tabwidth unspecified
