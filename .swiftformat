@@ -31,11 +31,11 @@
 --trailingclosures 
 --typeattributes prev-line
 --varattributes same-line
---wraparguments before-first
+--wraparguments after-first
 --wrapcollections before-first
 --wrapconditions before-first
 --wrapenumcases always
---wrapparameters before-first
+--wrapparameters after-first
 --wrapreturntype preserve
 --wrapternary default
 --wraptypealiases preserve
