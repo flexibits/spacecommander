@@ -27,6 +27,8 @@ class MacroSemicolonAppender(AbstractCustomFormatter):
             needs_semicolon = needs_semicolon and not preceding_line_ends_with_backslash
             # If the prior line ends with a comma, we're part of a larger statement.
             needs_semicolon = needs_semicolon and not preceding_line_ends_with_comma
+            # Ignore NS_SWIFT_NAME
+            needs_semicolon = needs_semicolon and not stripped_line.startswith("NS_SWIFT_NAME")
 
             if needs_semicolon:
                 line = line.rstrip() + ";\n"
