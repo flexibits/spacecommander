@@ -15,7 +15,7 @@ source "$DIR"/lib/common-lib.sh
 objc_files=$(all_valid_objc_files_in_repo)
 [ -z "$objc_files" ] && exit 0
 
-echo -e "$objc_files" | xargs -I CMD -P 4 "$DIR"/format-objc-file.sh CMD || fail=yes
+echo -e "$objc_files" | xargs -I CMD -P 10 "$DIR"/format-objc-file.sh CMD || fail=yes
 
 [ -z "$fail" ] || exit 1
 
