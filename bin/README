@@ -1,2 +1,9 @@
-`clang-format-12.0.0` from:
- https://github.com/llvm/llvm-project based upon 244022a3cd75b51dcf1d2a5a822419492ce79e47, built with DCMAKE_BUILD_TYPE=Release
+`clang-format` built from https://github.com/llvm/llvm-project at revision 60b43ef70b6d0bef9b738d1358a71b55d402288f
+Apply patch 60b43ef70b6d0bef9b738d1358a71b55d402288f.diff to fix Obj-C block indentation and nested ternaries on multiple lines
+
+```
+git clone https://github.com/llvm/llvm-project
+mkdir build
+cd build
+cmake -DLLVM_ENABLE_PROJECTS=clang -DCMAKE_BUILD_TYPE=Release -DLLVM_INCLUDE_EXAMPLES=OFF -DLLVM_INCLUDE_TESTS=OFF ../llvm
+```

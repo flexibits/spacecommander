@@ -9,7 +9,7 @@ AccessModifierOffset: -1
 ConstructorInitializerIndentWidth: 4
 SortIncludes: false
 
-AlignAfterOpenBracket: true
+AlignAfterOpenBracket: Align
 AlignEscapedNewlinesLeft: true
 AlignOperands: false
 AlignTrailingComments: false

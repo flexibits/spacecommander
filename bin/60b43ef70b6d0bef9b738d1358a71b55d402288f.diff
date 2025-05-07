@@ -1,0 +1,62 @@
+diff --git a/clang/lib/Format/ContinuationIndenter.cpp b/clang/lib/Format/ContinuationIndenter.cpp
+index 55e1d1ceb55b..b642da5de6c3 100644
+--- a/clang/lib/Format/ContinuationIndenter.cpp
++++ b/clang/lib/Format/ContinuationIndenter.cpp
+@@ -448,13 +448,14 @@ bool ContinuationIndenter::mustBreak(const LineState &State) {
+       !Current.isOneOf(tok::r_paren, tok::r_brace)) {
+     return true;
+   }
+-  if (CurrentState.IsChainedConditional &&
++    // Commented out to prevent chained null coalescing ternaries from wrapping
++  /*if (CurrentState.IsChainedConditional &&
+       ((Style.BreakBeforeTernaryOperators && Current.is(TT_ConditionalExpr) &&
+         Current.is(tok::colon)) ||
+        (!Style.BreakBeforeTernaryOperators && Previous.is(TT_ConditionalExpr) &&
+         Previous.is(tok::colon)))) {
+     return true;
+-  }
++  }*/
+   if (((Previous.is(TT_DictLiteral) && Previous.is(tok::l_brace)) ||
+        (Previous.is(TT_ArrayInitializerLSquare) &&
+         Previous.ParameterCount > 1) ||
+@@ -1857,6 +1858,7 @@ void ContinuationIndenter::moveStatePastFakeLParens(LineState &State,
+       NewParenState.LastSpace = std::max(NewParenState.LastSpace, State.Column);
+     if (PrecedenceLevel != prec::Conditional &&
+         Current.isNot(TT_UnaryOperator) &&
++        Current.isNot(TT_SelectorName) && Current.isNot(TT_ObjCMethodExpr) &&
+         Style.AlignAfterOpenBracket != FormatStyle::BAS_DontAlign) {
+       NewParenState.StartOfFunctionCall = State.Column;
+     }
+diff --git a/clang/unittests/Format/FormatTestObjC.cpp b/clang/unittests/Format/FormatTestObjC.cpp
+index f7f73db62045..348707c7489a 100644
+--- a/clang/unittests/Format/FormatTestObjC.cpp
++++ b/clang/unittests/Format/FormatTestObjC.cpp
+@@ -1510,13 +1510,21 @@ TEST_F(FormatTestObjC, BreakLineBeforeNestedBlockParam) {
+                "} withTimeout:5 completionHandler:^{\n"
+                "  doStuff();\n"
+                "}];");
+-  verifyFormat(
+-      "[self setupTextFieldSignals:@[\n"
+-      "  self.documentWidthField,\n"
+-      "  self.documentHeightField,\n"
+-      "] solver:^(NSTextField *textField) {\n"
+-      "  return [self.representedObject solveEquationForTextField:textField];\n"
+-      "}];");
++  verifyFormat("[self setupTextFieldSignals:@[\n"
++               "  self.documentWidthField,\n"
++               "  self.documentHeightField,\n"
++               "] solver:^(NSTextField *textField) {\n"
++               "  return [self.representedObject solveEquationForTextField:textField];\n"
++               "}];");
++  verifyFormat("[self setBlock:[Block block:^{\n"
++               "  return;\n"
++               "}]];");
++  verifyFormat("return [xxx method:[yyy method:^{\n"
++               "  return;\n"
++               "}]] > 0;");
++  verifyFormat("xxx = yyy && [zzz method:[zzz method:^{\n"
++               "  return;\n"
++               "}]] > 0;");
+ }
+ 
+ TEST_F(FormatTestObjC, IfNotUnlikely) {
