@@ -1,9 +1,9 @@
 ---
-# Custom options in the special build of clang-format (these are not standard options)
-IndentNestedBlocks: false
-AllowNewlineBeforeBlockParameter: false
+# `Language` intentionally left blank to apply these rules
+# as the default formatting options.
+# This addresses an issue which can occur when clang-format
+# decides a header looks more like c++ than objc.
 
-Language:        Cpp
 # BasedOnStyle:  Google
 AccessModifierOffset: -1
 ConstructorInitializerIndentWidth: 4
@@ -17,8 +17,8 @@ AlignTrailingComments: false
 AllowAllParametersOfDeclarationOnNextLine: false
 AllowShortBlocksOnASingleLine: false
 AllowShortCaseLabelsOnASingleLine: false
-AllowShortFunctionsOnASingleLine: false
-AllowShortIfStatementsOnASingleLine: false
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortFunctionsOnASingleLine: None
 AllowShortLoopsOnASingleLine: false
 
 AlwaysBreakAfterDefinitionReturnType: false
@@ -41,7 +41,7 @@ IndentFunctionDeclarationAfterType: false
 MaxEmptyLinesToKeep: 2
 KeepEmptyLinesAtTheStartOfBlocks: false
 NamespaceIndentation: Inner
-ObjCSpaceAfterProperty: false
+ObjCBreakBeforeNestedBlockParam: false
 ObjCSpaceBeforeProtocolList: true
 ObjCBlockIndentWidth: 4
 PenaltyBreakBeforeFirstCallParameter: 10000
@@ -53,12 +53,12 @@ PenaltyReturnTypeOnItsOwnLine: 200
 PointerAlignment: Right
 SpacesBeforeTrailingComments: 1
 Cpp11BracedListStyle: true
-Standard:        Auto
-IndentWidth:     4
-TabWidth:        8
-UseTab:          Never
+Standard: Auto
+IndentWidth: 4
+TabWidth: 8
+UseTab: Never
 BreakBeforeBraces: Custom
-BraceWrapping: 
+BraceWrapping:
     AfterClass: true
     AfterControlStatement: false
     AfterEnum: false
@@ -70,10 +70,11 @@ BraceWrapping:
     BeforeCatch: false
     BeforeElse: false
     IndentBraces: false
+    SplitEmptyFunction: false
 
 SpacesInParentheses: false
 SpacesInSquareBrackets: false
-SpacesInAngles:  false
+SpacesInAngles: false
 SpaceInEmptyParentheses: false
 SpacesInCStyleCastParentheses: false
 SpaceAfterCStyleCast: false
@@ -81,7 +82,7 @@ SpacesInContainerLiterals: false
 SpaceBeforeAssignmentOperators: true
 
 ContinuationIndentWidth: 4
-CommentPragmas:  '^ IWYU pragma:'
-ForEachMacros:   [ foreach, Q_FOREACH, BOOST_FOREACH ]
+CommentPragmas: "^ IWYU pragma:"
+ForEachMacros: [foreach, Q_FOREACH, BOOST_FOREACH]
 SpaceBeforeParens: ControlStatements
-DisableFormat:   false
+DisableFormat: false
