@@ -80,7 +80,7 @@ function format_objc_file_dry_run() {
 
 	if [[ ${filename##*.} == 'swift' ]]; then
 		swiftformat "$1" --config "$DIR/.swiftformat" --output stdout --quiet
-		exit $?
+        return
 	fi
 
 	cat "$1" |
