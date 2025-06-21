@@ -7,7 +7,8 @@
 # BasedOnStyle:  Google
 AccessModifierOffset: -1
 ConstructorInitializerIndentWidth: 4
-SortIncludes: false
+SortIncludes: true
+IncludeBlocks: Merge
 
 AlignAfterOpenBracket: Align
 AlignEscapedNewlinesLeft: true
