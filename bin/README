@@ -5,5 +5,6 @@ Apply patch 60b43ef70b6d0bef9b738d1358a71b55d402288f.diff to fix Obj-C block ind
 git clone https://github.com/llvm/llvm-project
 mkdir build
 cd build
-cmake -DLLVM_ENABLE_PROJECTS=clang -DCMAKE_BUILD_TYPE=Release -DLLVM_INCLUDE_EXAMPLES=OFF -DLLVM_INCLUDE_TESTS=OFF ../llvm
+cmake -DLLVM_ENABLE_PROJECTS=clang -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_ZSTD=OFF -DLLVM_INCLUDE_EXAMPLES=OFF -DLLVM_INCLUDE_TESTS=OFF ../llvm
+make clang-format -j10
 ```
