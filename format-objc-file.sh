@@ -12,6 +12,7 @@ DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 PATH=$PATH:/opt/homebrew/bin
 DRY_RUN=0
 FILE=""
+CONFIG_FILE=""
 
 function help() {
 	echo "$0 - formats an objc file"
@@ -19,8 +20,9 @@ function help() {
 	echo "$0 [options] file"
 	echo " "
 	echo "options:"
-	echo "-h, --help     show brief help"
-	echo "-d, --dry-run  output formatted file to STDOUT, instead of modifying it"
+	echo "-h, --help         show brief help"
+	echo "-d, --dry-run      output formatted file to STDOUT, instead of modifying it"
+	echo "-c, --config PATH  path to a custom .clang-format configuration file"
 }
 
 while test $# -gt 0; do
@@ -31,6 +33,11 @@ while test $# -gt 0; do
 		;;
 	-d | --dry-run)
 		DRY_RUN=1
+		shift
+		;;
+	-c | --config)
+		shift
+		CONFIG_FILE="$1"
 		shift
 		;;
 	*)
@@ -45,7 +52,7 @@ while test $# -gt 0; do
 	esac
 done
 
-if [ ! -e ".clang-format" ]; then
+if [ ! -e ".clang-format" ] && [ -z "$CONFIG_FILE" ]; then
 	echo "Couldn't find .clang-format file, unable to format files. Please setup this repo by running the setup-repo.sh script from your repo's top level."
 	echo "Also, formatting scripts should be run from the repo's top level dir."
 	exit 1
@@ -75,6 +82,11 @@ function format_objc_file_dry_run() {
 		return
 	fi
 
+	style="-style=file"
+	if [ ! -z $CONFIG_FILE ]; then
+		style="-style=file:$CONFIG_FILE"
+	fi
+
 	# Format Swift files using swiftformat
 	filename=$(basename "$1")
 
@@ -84,18 +96,9 @@ function format_objc_file_dry_run() {
 	fi
 
 	cat "$1" |
-		/usr/bin/python3 "$DIR"/custom/LiteralSymbolSpacer.py |
-		/usr/bin/python3 "$DIR"/custom/InlineConstructorOnSingleLine.py |
-		/usr/bin/python3 "$DIR"/custom/MacroSemicolonAppender.py |
-		#/usr/bin/python3 "$DIR"/custom/DoubleNewlineInserter.py |
-		"$DIR"/bin/clang-format -style=file |
-		#/usr/bin/python3 "$DIR"/custom/GenericCategoryLinebreakIndentation.py |
-		/usr/bin/python3 "$DIR"/custom/ParameterAfterBlockNewline.py |
-		/usr/bin/python3 "$DIR"/custom/HasIncludeSpaceRemover.py |
-		/usr/bin/python3 "$DIR"/custom/NewLineAtEndOfFileInserter.py |
-		/usr/bin/python3 "$DIR"/custom/RemoveVoidBlockDeclaration.py |
-		/usr/bin/python3 "$DIR"/custom/RemoveAPIAvailableSemicolon.py |
-		/usr/bin/python3 "$DIR"/custom/DeferDeprecationsIndentationFix.py
+		/usr/bin/python3 "$DIR"/custom/PreClangFormatFormatter.py |
+		"$DIR"/bin/clang-format "$style" |
+		/usr/bin/python3 "$DIR"/custom/PostClangFormatFormatter.py
 }
 
 function format_objc_file() {

@@ -39,8 +39,10 @@ ExperimentalAutoDetectBinPacking: false
 IndentCaseLabels: true
 IndentWrappedFunctionNames: false
 IndentFunctionDeclarationAfterType: false
+InsertNewlineAtEOF: true
 MaxEmptyLinesToKeep: 2
-KeepEmptyLinesAtTheStartOfBlocks: false
+KeepEmptyLines:
+    AtStartOfBlock: false
 NamespaceIndentation: Inner
 ObjCBreakBeforeNestedBlockParam: false
 ObjCSpaceBeforeProtocolList: true
@@ -73,6 +75,7 @@ BraceWrapping:
     IndentBraces: false
     SplitEmptyFunction: false
 
+RemoveBracesLLVM: false
 SpacesInParentheses: false
 SpacesInSquareBrackets: false
 SpacesInAngles: false

@@ -1,11 +1,11 @@
-# DeferDepracationIndentationFixer.py
+# DeferDeprecationsIndentationFix.py
 # clang-format gets confused by BEGIN_DEFER_DEPRECATION_UNTIL_IOS_<> and
 # END_DEFER_DEPRECATION_UNTIL_IOS_<>, indenting the line after them wrongly.
 #
 from AbstractCustomFormatter import AbstractCustomFormatter
 import re
 
-class DeferDepracationIndentationFixer(AbstractCustomFormatter):
+class DeferDeprecationsIndentationFix(AbstractCustomFormatter):
     def format_lines(self, lines):
 
         lines_to_write = lines
@@ -47,4 +47,4 @@ class DeferDepracationIndentationFixer(AbstractCustomFormatter):
         return "".join(lines_to_write)
 
 if __name__ == "__main__":
-    DeferDepracationIndentationFixer().run()
+    DeferDeprecationsIndentationFix().run()
