@@ -32,7 +32,7 @@
 --varattributes same-line
 --wraparguments after-first
 --wrapcollections before-first
---wrapconditions before-first
+--wrapconditions after-first
 --wrapenumcases always
 --wrapparameters after-first
 --wrapreturntype preserve
