@@ -1,6 +1,6 @@
 // Copyright 2015 Square, Inc
-#import @"XYZGeometry.h"
 #import "Blah.h"
+#import @"XYZGeometry.h"
 #import <Great.h>
 @import FooFramework;
 @import FooFramework.SubModule;
@@ -54,32 +54,29 @@ BOOL extraSemicolonsNotInsertedAfterCGStructInitializer()
                                                                                  width:hairline];
 }
 
-
 @interface NSDictionary <__covariant KeyType, __covariant ObjectType>(INSScrub)
 
-@property (nonatomic, assign, getter=isWackSpacingGetter, readonly) BOOL wackSpacing;
-@property (readonly, copy) NSDictionary<KeyType, ObjectType> *ins_scrubbed;
-@property (nonatomic, assign, getter=isWackSpacingGetter, readonly) BOOL wackSpacing;
+@property(nonatomic, assign, getter=isWackSpacingGetter, readonly) BOOL wackSpacing;
+@property(readonly, copy) NSDictionary<KeyType, ObjectType> *ins_scrubbed;
+@property(nonatomic, assign, getter=isWackSpacingGetter, readonly) BOOL wackSpacing;
 
 @end
 
-
 @interface NSDictionary <__covariant KeyType, __covariant ObjectType>(INSScrub)
 
-@property (readonly, copy) NSDictionary<KeyType, ObjectType> *ins_scrubbedA;
-@property (readonly, copy) NSDictionary<KeyType, ObjectType> *ins_scrubbedB;
+@property(readonly, copy) NSDictionary<KeyType, ObjectType> *ins_scrubbedA;
+@property(readonly, copy) NSDictionary<KeyType, ObjectType> *ins_scrubbedB;
 
 @end
 
 #define RKTAddTestCaseCategoryInterface(klass, name)      \
     @class klass;                                         \
     @interface KIFTestCase (klass##_ConvenienceAdditions) \
-    @property (nonatomic, readonly, strong) klass *name;  \
+    @property(nonatomic, readonly, strong) klass *name;   \
     @end
 
-
 @interface ProblemChild <NeatInterface>
-@property (nonatomic, assign, getter=isWackSpacingGetter, readonly) BOOL wackSpacing;
+@property(nonatomic, assign, getter=isWackSpacingGetter, readonly) BOOL wackSpacing;
 
 - (void)performOnMainThreadUsingBlock:(dispatch_block_t)block SQ_DEPRECATED("Should use addOperationWithBlock: on NSOperationQueue's mainQueue. Will be removed after 3/1/2015.");
 @end
@@ -93,8 +90,10 @@ BOOL extraSemicolonsNotInsertedAfterCGStructInitializer()
 struct Update {
     UpdateType type;
     string value;
-    Update() : type(UPDATE_WRITE), value("") {}
-    Update(UpdateType t, const Slice &v) : type(t), value(v.data(), v.size()) {}
+    Update() : type(UPDATE_WRITE), value("")
+    {}
+    Update(UpdateType t, const Slice &v) : type(t), value(v.data(), v.size())
+    {}
 };
 
 /* Same deal here, don't mess with adding newlines after this comment block
@@ -102,7 +101,6 @@ struct Update {
  * and trailing spaces */
 @implementation Foo
 @end
-
 
 @implementation ProblemChild
 
@@ -114,8 +112,8 @@ struct Update {
         SQTypedKeyPath(MQItemControl, enabled),
         SQTypedKeyPath(MQItemControl, selected)
     ]];
-    NSArray *testLiteral = @[ cool ];
-    NSDictionary *dictLiteral = @{@"foo" : testLiteral};
+    NSArray *testLiteral = @[cool];
+    NSDictionary *dictLiteral = @{@"foo": testLiteral};
     SQCheckCondition(NO, , @"Will the commas stay together?");
 }
 
@@ -146,14 +144,14 @@ struct Update {
 
 - (void)blockFormat;
 {
-    [self block:^(void) {
+    [self block:^{
         doStuff();
-    } completionHandler:^(void) {
+    } completionHandler:^{
         doStuff();
 
-        [self block:^(void) {
+        [self block:^{
             doStuff();
-        } completionHandler:^(void) {
+        } completionHandler:^{
             doStuff();
         }];
     }];
@@ -195,14 +193,14 @@ struct Update {
 {
     NSArray *dictionaries = @[
         @{
-            @"token" : @"aaa",
-            @"first_name" : @"Alice",
-            @"last_name" : @"Adams"
+            @"token": @"aaa",
+            @"first_name": @"Alice",
+            @"last_name": @"Adams"
         },
         @{
-            @"token" : @"bbb",
-            @"first_name" : @"Betty",
-            @"last_name" : @"Brant"
+            @"token": @"bbb",
+            @"first_name": @"Betty",
+            @"last_name": @"Brant"
         }
     ];
 }
@@ -224,10 +222,10 @@ INSAFSuccessBlock INSAPIClientModelSuccessHandler(Class mantleClass, NSString *_
 - (void)fetchWithSuccess:(nullable dispatch_block_t)success failure:(nullable INSHTTPFailure)failure
 {
     [self GET:@"data" parameters:nil success:INSAPIClientModelArraySuccessChain([INSModel class], nil, ^(INSModel *model, id responseObject) {
-                                         if (success) {
-                                             success();
-                                         }
-                                     }, failure) failure:failure];
+        if (success) {
+            success();
+        }
+    }, failure) failure:failure];
 }
 
 - (void)postWithSuccess:(nullable INSHTTPSuccess)success failure:(nullable INSHTTPFailure)failure
